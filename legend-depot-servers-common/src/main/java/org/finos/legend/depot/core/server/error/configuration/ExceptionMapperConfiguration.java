@@ -1,4 +1,4 @@
-//  Copyright 2021 Goldman Sachs
+//  Copyright 2024 Goldman Sachs
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -13,21 +13,22 @@
 //  limitations under the License.
 //
 
+package org.finos.legend.depot.core.server.error.configuration;
 
-package org.finos.legend.depot.store.api.admin.schedules;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import org.finos.legend.depot.store.model.admin.schedules.ScheduleInstance;
-
-import java.util.List;
-
-public interface ScheduleInstancesStore
+public class ExceptionMapperConfiguration
 {
-    List<ScheduleInstance> getAll();
+    @JsonProperty
+    private boolean includeStackTrace = false;
 
-    List<ScheduleInstance> find(String scheduleName);
+    public boolean includeStackTrace()
+    {
+        return includeStackTrace;
+    }
 
-    void insert(ScheduleInstance instance);
-
-    long delete(long l);
-
+    public void setIncludeStackTrace(boolean includeStackTrace)
+    {
+        this.includeStackTrace = includeStackTrace;
+    }
 }
